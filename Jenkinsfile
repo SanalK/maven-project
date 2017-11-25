@@ -2,11 +2,8 @@ pipeline {
     agent any
     stages{
         stage('Build'){
-           steps { 
-                 sh '''
-                    echo "PATH = ${PATH}:/opt/maven/apache-maven-3.5.0/bin"
-                    '''                
-                sh '/opt/maven/apache-maven-3.5.0/bin/mvn clean package'
+            steps {
+               sh '/opt/maven/apache-maven-3.5.0/bin/mvn clean package'
             }
             post {
                 success {
@@ -14,12 +11,11 @@ pipeline {
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
+        }
         stage ('Deploy to Staging'){
             steps {
                 build job: 'Deploy-to-staging'
             }
-		}
-		
         }
     }
 }
