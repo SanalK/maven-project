@@ -4,7 +4,7 @@ pipeline {
         stage('Build'){
             steps {
                 def mvnHome = tool 'localMaven'
-                sh '{$mvnHome}\bin\mvn clean package'
+                sh '{$mvnHome}/bin/mvn clean package'
             }
             post {
                 success {
