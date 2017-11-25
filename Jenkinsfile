@@ -2,8 +2,7 @@ pipeline {
     agent any
     stages{
         stage('Build'){
-            def mvnHome = tool 'localMaven'
-            steps { 
+           steps { 
                  sh '''
                     echo "PATH = ${PATH}"
                     '''                
