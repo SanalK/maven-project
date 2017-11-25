@@ -4,7 +4,7 @@ pipeline {
         stage('Build'){
            steps { 
                  sh '''
-                    echo "PATH = ${PATH}"
+                    echo "PATH = ${PATH}:/opt/maven/apache-maven-3.5.0/bin"
                     '''                
                 sh 'mvn clean package'
             }
