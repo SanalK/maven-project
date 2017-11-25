@@ -3,8 +3,11 @@ pipeline {
     stages{
         stage('Build'){
             def mvnHome = tool 'localMaven'
-            steps {                
-                sh '{$mvnHome}/bin/mvn clean package'
+            steps { 
+                 sh '''
+                    echo "PATH = ${PATH}"
+                    '''                
+                sh 'mvn clean package'
             }
             post {
                 success {
